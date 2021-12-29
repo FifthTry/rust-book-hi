@@ -1,0 +1,19 @@
+-- import: fifthtry.github.io/Flash-theme as ft
+
+-- ft.toc:
+$processor$: toc
+
+- index.html
+  रस्ट प्रोग्रामिंग लैंग्वेज
+- foreword/
+  प्रस्तावना
+- ch00-00-introduction/
+  परिचय
+- ch01-00-getting-started/
+  शुरू करना
+  - ch01-01-installation/
+    Installation
+  - ch01-02-hello-world/
+    Hello, World!
+  - ch01-03-hello-cargo/
+    Hello, Cargo

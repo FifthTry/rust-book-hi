@@ -2,7 +2,7 @@
 
 -- fpm.package: fifthtry.github.io/rust-book-hi
 language: hi
-zip: github.com/fifthtry/rust-book-hi/archive/refs/heads/prelude.zip
+zip: github.com/fifthtry/rust-book-hi/archive/refs/heads/main.zip
 translation-of: fifthtry.github.io/rust-book-en
 
 -- fpm.dependency: fifthtry.github.io/Flash-theme
