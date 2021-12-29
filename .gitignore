@@ -11,3 +11,4 @@ Cargo.lock
 
 .build/
 .idea/
+.packages/
