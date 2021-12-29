@@ -1,6 +1,6 @@
 -- import: fpm
 
--- fpm.package: fpm-blog
+-- fpm.package: rust_book_hi
 
 -- fpm.dependency: fifthtry/blog-theme
 repo: github
