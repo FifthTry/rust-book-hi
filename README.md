@@ -1,4 +1,3 @@
-# fpm-blog
+# rust-book-hi
 
-This template allows you to get started with a [FPM](https://fpm.dev) powered blog.
-
+This is the hindi translation of the [rust-book-en](https://github.com/FifthTry/rust-book-en/).
