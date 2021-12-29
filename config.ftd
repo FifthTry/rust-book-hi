@@ -1,0 +1,8 @@
+-- import: fifthtry/blog-theme as lib
+
+-- lib.site-name: Sourabh's blog
+-- lib.site-logo:  https://res.cloudinary.com/dphj6havg/image/upload/v1638644344/Group_551_gqhmnl.svg
+-- lib.copyright-text: © 2021 FPM Blog - Latest FPM News & Updates
+-- lib.author-name: Sourabh
+-- lib.author-bio: I'm a web/software developer who loves to build projects and share valuable tips for new programmers on this blog.
+-- lib.author-image: https://res.cloudinary.com/dphj6havg/image/upload/v1640161877/pexels-pixabay-220453_1_1_vmdxvr.jpg
