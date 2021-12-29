@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><base href="/rust-book-hi/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">̦
+    <title>रस्ट प्रोग्रामिंग लैंग्वेज</title>
+
+    <script type="ftd" id="ftd-data-message">
+        {
+  "fpm#document-id": {
+    "value": "ch01-02-hello-world.ftd",
+    "dependencies": {}
+  }
+}
+    </script>
+    <script type="ftd" id="ftd-external-children-message">
+        {}
+    </script>
+    <script type="ftd" id="ftd-data-main">
+        {
+  "@body@0,1": {
+    "value": "Now that you’ve installed Rust, let’s write your first Rust program. It’s\ntraditional when learning a new language to write a little program that prints\nthe text `Hello, world!` to the screen, so we’ll do the same here!\n\n> Note: This book assumes basic familiarity with the command line. Rust makes\n> no specific demands about your editing or tooling or where your code lives, so\n> if you prefer to use an integrated development environment (IDE) instead of\n> the command line, feel free to use your favorite IDE. Many IDEs now have some\n> degree of Rust support; check the IDE’s documentation for details. Recently,\n> the Rust team has been focusing on enabling great IDE support, and progress\n> has been made rapidly on that front!\n\n### Creating a Project Directory\n\nYou’ll start by making a directory to store your Rust code. It doesn’t matter\nto Rust where your code lives, but for the exercises and projects in this book,\nwe suggest making a *projects* directory in your home directory and keeping all\nyour projects there.\n\nOpen a terminal and enter the following commands to make a *projects* directory\nand a directory for the “Hello, world!” project within the *projects* directory.\n\nFor Linux, macOS, and PowerShell on Windows, enter this:\n\n```console\n$ mkdir ~/projects\n$ cd ~/projects\n$ mkdir hello_world\n$ cd hello_world\n```\n\nFor Windows CMD, enter this:\n\n```cmd\n> mkdir \"%USERPROFILE%\\projects\"\n> cd /d \"%USERPROFILE%\\projects\"\n> mkdir hello_world\n> cd hello_world\n```\n\n### Writing and Running a Rust Program\n\nNext, make a new source file and call it *main.rs*. Rust files always end with\nthe *.rs* extension. If you’re using more than one word in your filename, use\nan underscore to separate them. For example, use *hello_world.rs* rather than\n*helloworld.rs*.\n\nNow open the *main.rs* file you just created and enter the code in Listing 1-1.\n\n<span class=\"filename\">Filename: main.rs</span>\n\n```rust\nfn main() {\n    println!(\"Hello, world!\");\n}\n```\n\n<span class=\"caption\">Listing 1-1: A program that prints `Hello, world!`</span>\n\nSave the file and go back to your terminal window. On Linux or macOS, enter\nthe following commands to compile and run the file:\n\n```console\n$ rustc main.rs\n$ ./main\nHello, world!\n```\n\nOn Windows, enter the command `.\\main.exe` instead of `./main`:\n\n```powershell\n> rustc main.rs\n> .\\main.exe\nHello, world!\n```\n\nRegardless of your operating system, the string `Hello, world!` should print to\nthe terminal. If you don’t see this output, refer back to the\n[“Troubleshooting”][troubleshooting]<!-- ignore --> part of the Installation\nsection for ways to get help.\n\nIf `Hello, world!` did print, congratulations! You’ve officially written a Rust\nprogram. That makes you a Rust programmer—welcome!\n\n### Anatomy of a Rust Program\n\nLet’s review in detail what just happened in your “Hello, world!” program.\nHere’s the first piece of the puzzle:\n\n```rust\nfn main() {\n\n}\n```\n\nThese lines define a function in Rust. The `main` function is special: it is\nalways the first code that runs in every executable Rust program. The first\nline declares a function named `main` that has no parameters and returns\nnothing. If there were parameters, they would go inside the parentheses, `()`.\n\nAlso, note that the function body is wrapped in curly brackets, `{}`. Rust\nrequires these around all function bodies. It’s good style to place the opening\ncurly bracket on the same line as the function declaration, adding one space in\nbetween.\n\nIf you want to stick to a standard style across Rust projects, you can use an\nautomatic formatter tool called `rustfmt` to format your code in a particular\nstyle. The Rust team has included this tool with the standard Rust distribution,\nlike `rustc`, so it should already be installed on your computer! Check the\nonline documentation for more details.\n\nInside the `main` function is the following code:\n\n```rust\n    println!(\"Hello, world!\");\n```\n\nThis line does all the work in this little program: it prints text to the\nscreen. There are four important details to notice here.\n\nFirst, Rust style is to indent with four spaces, not a tab.\n\nSecond, `println!` calls a Rust macro. If it called a function instead, it\nwould be entered as `println` (without the `!`). We’ll discuss Rust macros in\nmore detail in Chapter 19. For now, you just need to know that using a `!`\nmeans that you’re calling a macro instead of a normal function, and that macros\ndon’t always follow the same rules as functions.\n\nThird, you see the `\"Hello, world!\"` string. We pass this string as an argument\nto `println!`, and the string is printed to the screen.\n\nFourth, we end the line with a semicolon (`;`), which indicates that this\nexpression is over and the next one is ready to begin. Most lines of Rust code\nend with a semicolon.\n\n### Compiling and Running Are Separate Steps\n\nYou’ve just run a newly created program, so let’s examine each step in the\nprocess.\n\nBefore running a Rust program, you must compile it using the Rust compiler by\nentering the `rustc` command and passing it the name of your source file, like\nthis:\n\n```console\n$ rustc main.rs\n```\n\nIf you have a C or C++ background, you’ll notice that this is similar to `gcc`\nor `clang`. After compiling successfully, Rust outputs a binary executable.\n\nOn Linux, macOS, and PowerShell on Windows, you can see the executable by\nentering the `ls` command in your shell. On Linux and macOS, you’ll see two\nfiles. With PowerShell on Windows, you’ll see the same three files that you\nwould see using CMD.\n\n```console\n$ ls\nmain  main.rs\n```\n\nWith CMD on Windows, you would enter the following:\n\n```cmd\n> dir /B %= the /B option says to only show the file names =%\nmain.exe\nmain.pdb\nmain.rs\n```\n\nThis shows the source code file with the *.rs* extension, the executable file\n(*main.exe* on Windows, but *main* on all other platforms), and, when using\nWindows, a file containing debugging information with the *.pdb* extension.\nFrom here, you run the *main* or *main.exe* file, like this:\n\n```console\n$ ./main # or .\\main.exe on Windows\n```\n\nIf *main.rs* was your “Hello, world!” program, this line would print `Hello,\nworld!` to your terminal.\n\nIf you’re more familiar with a dynamic language, such as Ruby, Python, or\nJavaScript, you might not be used to compiling and running a program as\nseparate steps. Rust is an *ahead-of-time compiled* language, meaning you can\ncompile a program and give the executable to someone else, and they can run it\neven without having Rust installed. If you give someone a *.rb*, *.py*, or\n*.js* file, they need to have a Ruby, Python, or JavaScript implementation\ninstalled (respectively). But in those languages, you only need one command to\ncompile and run your program. Everything is a trade-off in language design.\n\nJust compiling with `rustc` is fine for simple programs, but as your project\ngrows, you’ll want to manage all the options and make it easy to share your\ncode. Next, we’ll introduce you to the Cargo tool, which will help you write\nreal-world Rust programs.\n\n[troubleshooting]: ch01-01-installation.html#troubleshooting",
+    "dependencies": {
+      "0,0,1,0,0,2:main-container-external:0": "[{\"dependency_type\":\"Value\",\"condition\":null,\"parameters\":{}}]"
+    }
+  },
+  "@title@0,0": {
+    "value": "Hello, World!",
+    "dependencies": {
+      "0,0,1,0,0,0:main-container-external:0": "[{\"dependency_type\":\"Value\",\"condition\":null,\"parameters\":{}}]"
+    }
+  },
+  "fifthtry.github.io/Flash-theme#base_size": {
+    "value": "18",
+    "dependencies": {}
+  },
+  "fifthtry.github.io/Flash-theme#heading_size": {
+    "value": "28",
+    "dependencies": {}
+  },
+  "fifthtry.github.io/Flash-theme#neutral": {
+    "value": "#fff",
+    "dependencies": {}
+  },
+  "fifthtry.github.io/Flash-theme#neutral-200": {
+    "value": "#ced2dd",
+    "dependencies": {}
+  },
+  "fifthtry.github.io/Flash-theme#neutral-300": {
+    "value": "#F9F9F9",
+    "dependencies": {}
+  },
+  "fifthtry.github.io/Flash-theme#neutral-400": {
+    "value": "#E1E1E1",
+    "dependencies": {}
+  },
+  "fifthtry.github.io/Flash-theme#neutral-500": {
+    "value": "#323546",
+    "dependencies": {}
+  },
+  "fifthtry.github.io/Flash-theme#neutral-600": {
+    "value": "#3E4155",
+    "dependencies": {}
+  },
+  "fifthtry.github.io/Flash-theme#neutral-700": {
+    "value": "#1C1C24",
+    "dependencies": {}
+  },
+  "fifthtry.github.io/Flash-theme#neutral-800": {
+    "value": "#000",
+    "dependencies": {}
+  },
+  "fifthtry.github.io/Flash-theme#sub_heading_size": {
+    "value": "22",
+    "dependencies": {}
+  },
+  "fifthtry.github.io/Flash-theme#title_size": {
+    "value": "36",
+    "dependencies": {}
+  }
+}
+    </script>
+    <script type="ftd" id="ftd-external-children-main">
+        {
+  "main-container-external:0": [
+    {
+      "condition": [
+        "main-container:0,0,1,0"
+      ],
+      "set_at": "main-container:0,0,1,0"
+    }
+  ]
+}
+    </script>
+
+    <script>
+        // all ftd_utils are meant to be pure functions only: they can only depend on the
+// input passed, not on closures or global data etc
+let ftd_utils = {
+    is_visible: function (id, affected_id) {
+        return (document.querySelector(`[data-id="${affected_id}:${id}"]`).style.display !== "none");
+    },
+
+    box_shadow_value_null: function (value) {
+        return (value === "0px 0px 0px 0px") ? null : value;
+    },
+
+    box_shadow_value: function (parameter, data_id, value) {
+        let current_value  = document.querySelector(`[data-id="${data_id}"]`).style.getPropertyValue('box-shadow');
+        if (current_value.length === 0) {
+            current_value = "0px 0px 0px 0px";
+        }
+        let first_split = current_value.split(') ');
+        if (first_split.length === 1) {
+            first_split.unshift('');
+        } else {
+            first_split[0] = `${first_split[0]})`;
+        }
+        if (parameter === "shadow-color") {
+            if (value === null) {
+                return ftd_utils.box_shadow_value_null(first_split[1].trim());
+            }
+            first_split[0] = value;
+            return ftd_utils.box_shadow_value_null(first_split.join(' ').trim());
+        }
+        let second_split =  first_split[1].split(' ');
+        if (parameter === "shadow-offset-x") {
+            second_split[0] = value !== null ? value : '0px' ;
+            first_split[1] = second_split.join(' ');
+            return ftd_utils.box_shadow_value_null(first_split.join(' ').trim());
+        }
+        if (parameter === "shadow-offset-y") {
+            second_split[1] = value !== null ? value : '0px' ;
+            first_split[1] = second_split.join(' ');
+            return ftd_utils.box_shadow_value_null(first_split.join(' ').trim());
+        }
+        if (parameter === "shadow-blur") {
+            second_split[2] = value !== null ? value : '0px' ;
+            first_split[1] = second_split.join(' ');
+            return ftd_utils.box_shadow_value_null(first_split.join(' ').trim());
+        }
+        if (parameter === "shadow-size") {
+            second_split[3] = value !== null ? value : '0px' ;
+            first_split[1] = second_split.join(' ');
+            return ftd_utils.box_shadow_value_null(first_split.join(' ').trim());
+        }
+    },
+
+    align_value: function (data_id, value) {
+        let current_position  = document.querySelector(`[data-id="${data_id}"]`).style.getPropertyValue('position');
+        if (current_position === "fixed" || current_position === "absolute") {
+            document.querySelector(`[data-id="${data_id}"]`).style.setProperty('left', null);
+            document.querySelector(`[data-id="${data_id}"]`).style.setProperty('top', null);
+            document.querySelector(`[data-id="${data_id}"]`).style.setProperty('transform', null);
+            document.querySelector(`[data-id="${data_id}"]`).style.setProperty('right', null);
+            document.querySelector(`[data-id="${data_id}"]`).style.setProperty('bottom', null);
+            if (value === "center") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('left', '50%');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('top', '50%');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('transform', 'translate(-50%,-50%)');
+            } else if (value === "top") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('left', '50%');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('top', '0');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('transform', 'translateX(-50%)');
+            } else if (value === "left") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('left', '0');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('top', '50%');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('transform', 'translateY(-50%)');
+            } else if (value === "right") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('right', '0');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('top', '50%');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('transform', 'translate(-50%)');
+            } else if (value === "bottom") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('left', '50%');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('bottom', '0');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('transform', 'translateX(-50%)');
+            } else if (value === "top-left") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('left', '0');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('top', '0');
+            } else if (value === "top-right") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('right', '0');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('top', '0');
+            } else if (value === "bottom-left") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('left', '0');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('bottom', '0');
+            } else if (value === "bottom-right") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('right', '0');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('bottom', '0');
+            }
+        } else {
+            document.querySelector(`[data-id="${data_id}"]`).style.setProperty('align-self', null);
+            document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-bottom',null);
+            document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-top',null);
+            document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-left',null);
+            if (value === "center") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('align-self', 'center');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-bottom', 'auto');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-top', 'auto');
+            } else if (value === "top") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('align-self', 'center');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-bottom', 'auto');
+            } else if (value === "left") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('align-self', 'flex-start');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-bottom', 'auto');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-top', 'auto');
+            } else if (value === "right") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('align-self', 'flex-end');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-bottom', 'auto');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-top', 'auto');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-left', 'auto');
+            } else if (value === "bottom") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('align-self', 'center');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-bottom', '0');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-top', 'auto');
+            } else if (value === "top-left") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('align-self', 'flex-start');
+            } else if (value === "top-right") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('align-self', 'flex-end');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-left', 'auto');
+            } else if (value === "bottom-left") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('align-self', 'flex-start');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-bottom', '0');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-top', 'auto');
+            } else if (value === "bottom-right") {
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('align-self', 'flex-end');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-bottom', '0');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-top', 'auto');
+                document.querySelector(`[data-id="${data_id}"]`).style.setProperty('margin-left', 'auto');
+            }
+        }
+
+    },
+
+    line_clamp: function (data_id, value) {
+        let doc = document.querySelector(`[data-id="${data_id}"]`);
+        if (value == null) {
+            doc.style.setProperty('display', null);
+            doc.style.setProperty('overflow', null);
+            doc.style.setProperty('-webkit-line-clamp', null);
+            doc.style.setProperty('-webkit-box-orient', null);
+        } else {
+            doc.style.setProperty('display', '-webkit-box');
+            doc.style.setProperty('overflow', 'hidden');
+            doc.style.setProperty('-webkit-line-clamp', value);
+            doc.style.setProperty('-webkit-box-orient', 'vertical');
+        }
+    },
+
+    background_image: function (data_id, value) {
+        let background_repeat = document.querySelector(`[data-id="${data_id}"]`).style.getPropertyValue('background-repeat');
+        let doc = document.querySelector(`[data-id="${data_id}"]`);
+        if (value == null) {
+            doc.style.setProperty('background-image', null);
+            doc.style.setProperty('background-size', null);
+            doc.style.setProperty('background-position', null);
+        } else {
+            doc.style.setProperty('background-image', `url(${value})`);
+            if (background_repeat.length === 0) {
+                doc.style.setProperty('background-size', 'cover');
+                doc.style.setProperty('background-position', 'center');
+            }
+        }
+    },
+
+    background_repeat: function (data_id, value) {
+        let doc = document.querySelector(`[data-id="${data_id}"]`);
+        if (value == null) {
+            doc.style.setProperty('background-repeat', null);
+            doc.style.setProperty('background-size', 'cover');
+            doc.style.setProperty('background-position', 'center');
+        } else {
+            doc.style.setProperty('background-repeat', 'repeat');
+            doc.style.setProperty('background-size', null);
+            doc.style.setProperty('background-position', null);
+        }
+    },
+
+    first_child_styling: function (data_id) {
+        let parent = document.querySelector(`[data-id="${data_id}"]`).parentElement;
+        if (parent.dataset.spacing !== undefined) {
+            let spacing = parent.dataset.spacing.split(":");
+            let property = spacing[0].trim();
+            let value = spacing[1].trim();
+            let first_child = true;
+            for (let i = 0; i < parent.children.length; i++) {
+                if (!first_child) {
+                    parent.children[i].style.setProperty(property, value);
+                } else if (parent.children[i].style.display !== 'none') {
+                    parent.children[i].style.setProperty(property, null);
+                    first_child = false;
+                }
+            }
+        }
+    },
+
+
+    set_style: function (parameter, data_id, value, important) {
+        if (["shadow-offset-x", "shadow-offset-y", "shadow-size", "shadow-blur", "shadow-color"].includes(parameter)) {
+            let box_shadow_value = ftd_utils.box_shadow_value(parameter,data_id, value);
+            document.querySelector(`[data-id="${data_id}"]`).style.setProperty('box-shadow', box_shadow_value);
+        } else if (parameter === "align" || parameter === "position") {
+            ftd_utils.align_value(data_id, value);
+        } else if (parameter === "line-clamp") {
+            ftd_utils.line_clamp(data_id, value);
+        } else if (parameter === "background-image") {
+            ftd_utils.background_image(data_id, value);
+        } else if (parameter === "background-repeat") {
+            ftd_utils.background_repeat(data_id, value);
+        } else if (important) {
+            document.querySelector(`[data-id="${data_id}"]`).style.setProperty(`${parameter}`, value, 'important');
+        } else {
+            document.querySelector(`[data-id="${data_id}"]`).style.setProperty(`${parameter}`, value);
+        }
+    },
+
+    handle_action: function (id, target, value, data) {
+        data[target].value = value.toString();
+
+        let dependencies = data[target].dependencies;
+        for (const dependency in dependencies) {
+            if (!dependencies.hasOwnProperty(dependency)) {
+                continue;
+            }
+            let json_dependencies = JSON.parse(dependencies[dependency]);
+            var styles_edited = [];
+            for (const index in json_dependencies) {
+                let json_dependency = json_dependencies[index];
+                if (json_dependency.dependency_type === "Value") {
+                    document.querySelector(`[data-id="${dependency}:${id}"]`).innerText = data[target].value;
+                } else if (json_dependency.dependency_type === "Visible") {
+                    let display = "none";
+                    if (data[target].value === json_dependency.condition) {
+                        let is_flex = document.querySelector(`[data-id="${dependency}:${id}"]`).style.flexDirection.length;
+                        let is_webkit = document.querySelector(`[data-id="${dependency}:${id}"]`).style.webkitLineClamp.length;
+                        if (is_flex) {
+                            display = "flex";
+                        } else if (is_webkit) {
+                            display = "-webkit-box";
+                        } else {
+                            display = "block";
+                        }
+                    }
+                    document.querySelector(`[data-id="${dependency}:${id}"]`).style.display = display;
+                    ftd_utils.first_child_styling(`${dependency}:${id}`);
+
+                } else if (json_dependency.dependency_type === "Style") {
+                    if (data[target].value === json_dependency.condition) {
+                        for (const parameter in json_dependency.parameters) {
+                            let value = json_dependency.parameters[`${parameter}`].value.value;
+                            let important = json_dependency.parameters[`${parameter}`].value.important;
+                            ftd_utils.set_style(parameter, `${dependency}:${id}`, value, important);
+                            if (!styles_edited.includes(parameter)) {
+                                styles_edited.push(parameter);
+                            }
+                        }
+                    } else {
+                        for (const parameter in json_dependency.parameters) {
+                            let default_value = json_dependency.parameters[`${parameter}`].default;
+                            if (!styles_edited.includes(parameter)) {
+                                if (default_value === null) {
+                                    if (["border-left-width", "border-right-width", "border-top-width", "border-bottom-width"].includes(parameter)) {
+                                        default_value = "0px";
+                                        document.querySelector(`[data-id="${dependency}:${id}"]`).style[`${parameter}`] = default_value;
+                                    } else {
+                                        ftd_utils.set_style(parameter, `${dependency}:${id}`, default_value, false);
+                                    }
+                                } else {
+                                    let value = default_value.value;
+                                    let important = default_value.important;
+                                    ftd_utils.set_style(parameter, `${dependency}:${id}`, value, important);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
+
+window.ftd = (function () {
+    let ftd_data = {};
+    let ftd_external_children = {};
+
+    function external_children_replace(id) {
+        let external_children = ftd_external_children[id];
+        for (const object in external_children) {
+            if (!external_children.hasOwnProperty(object)) {
+                continue;
+            }
+
+            let conditions = external_children[object];
+            for (const idx in conditions) {
+                if (!conditions.hasOwnProperty(idx)) {
+                    continue;
+                }
+
+                let condition = conditions[idx].condition;
+                let set_at = conditions[idx].set_at;
+                let display = true;
+                for (const i in condition) {
+                    if (!condition.hasOwnProperty(i)) {
+                        continue;
+                    }
+
+                    display &= ftd_utils.is_visible(id, conditions[idx].condition[i])
+                    if (!display) {
+                        break;
+                    }
+                }
+                if (display) {
+                    console.log(`${object}::: ${set_at}`);
+                    let get_element_set_at = document.querySelector(`[data-id="${set_at}:${id}"]`);
+                    let objects_to_set = document.querySelectorAll(`[data-ext-id="${object}:${id}"]`);
+                    for (let i = 0; i < objects_to_set.length; i++) {
+                        let object_to_set = objects_to_set[i];
+                        let parent = object_to_set.parentElement;
+                        if (parent !== get_element_set_at) {
+                            get_element_set_at.appendChild(object_to_set);
+                        }
+                    }
+                    return;
+                }
+            }
+
+        }
+    }
+
+    function handle_event(evt, id, action) {
+        let act = action["action"];
+        let data = ftd_data[id];
+        if (act === "stop-propagation") {
+            evt.stopPropagation();
+        } else if (act === "prevent-default") {
+            evt.preventDefault();
+        } else if (act === "toggle") {
+            let target = action["target"];
+            exports.set_bool(id, target, data[target].value !== 'true');
+        } else if (act === "message-host") {
+            let target = action["target"].trim();
+            window[target]();
+        } else if (act === "increment") {
+            let target = action["target"];
+            let increment = 1;
+            if (action["parameters"].by !== undefined) {
+                increment = parseInt(action["parameters"].by[0]);
+            }
+            let clamp_max = undefined;
+            let clamp_min = undefined;
+            if (action["parameters"]["clamp"] !== undefined) {
+                let clamp_value = action["parameters"]["clamp"];
+                if (clamp_value.length === 1) {
+                    clamp_max = parseInt(clamp_value[0]);
+                }
+                if (clamp_value.length === 2) {
+                    clamp_min = parseInt(clamp_value[0]);
+                    clamp_max = parseInt(clamp_value[1]);
+                }
+            }
+            exports.increment_decrement_value(id, target, increment, clamp_min, clamp_max);
+
+        } else if (act === "decrement") {
+            let target = action["target"];
+            let decrement = -1;
+            if (action["parameters"].by !== undefined) {
+                decrement = -parseInt(action["parameters"].by[0]);
+            }
+
+            let clamp_max = undefined;
+            let clamp_min = undefined;
+            if (action["parameters"]["clamp"] !== undefined) {
+                let clamp_value = action["parameters"]["clamp"];
+                if (clamp_value.length === 1) {
+                    clamp_max = parseInt(clamp_value[0]);
+                }
+                if (clamp_value.length === 2) {
+                    clamp_min = parseInt(clamp_value[0]);
+                    clamp_max = parseInt(clamp_value[1]);
+                }
+            }
+
+            exports.increment_decrement_value(id, target, decrement, clamp_min, clamp_max);
+        } else if (act === "set-value") {
+            let target = action["target"];
+            let value = action["parameters"].value[0];
+            if (action["parameters"].value[1] === "integer") {
+                value = parseInt(value);
+            } else if (action["parameters"].value[1] === "decimal") {
+                value = parseFloat(value);
+            } else if (action["parameters"].value[1] === "boolean") {
+                value = (value === "true");
+            }
+
+            let data = ftd_data[id];
+            ftd_utils.handle_action(id, target, value, data);
+
+        } else {
+            console.log("unknown action:", act);
+            return;
+        }
+        external_children_replace(id);
+
+    }
+
+    let exports = {};
+
+    exports.handle_event = function (evt, id, event) {
+        console.log(id, event);
+        let actions = JSON.parse(event);
+        for (const action in actions) {
+            handle_event(evt, id, actions[action])
+        }
+    }
+
+    exports.increment_decrement_value = function (id, variable, increment_by, clamp_min, clamp_max) {
+        let data = ftd_data[id];
+
+        if (!data[variable]) {
+            console.log(variable, "is not in data, ignoring");
+            return;
+        }
+
+        let value = parseInt(data[variable].value);
+        value += increment_by;
+
+        if (clamp_max !== undefined) {
+            let min = (clamp_min === undefined) ? 0: clamp_min
+            if (clamp_max < value) {
+                value = min;
+            }
+            if (clamp_min > value) {
+                value = clamp_max;
+            }
+        }
+
+        ftd_utils.handle_action(id, variable, value, data);
+    }
+
+    exports.set_bool = function (id, variable, value) {
+        let data = ftd_data[id];
+
+        if (!data[variable]) {
+            console.log(variable, "is not in data, ignoring");
+            return;
+        }
+
+        ftd_utils.handle_action(id, variable, value, data);
+    }
+
+    exports.set_multi_value = function (id, list) {
+        for (const idx in list) {
+            if (!list.hasOwnProperty(idx)) {
+                continue;
+            }
+
+            let item = list[idx];
+            let [variable, value] = item;
+            this.set_bool(id, variable, value);
+        }
+    }
+
+    exports.init = function (id, data, external_children) {
+        ftd_data[id] = data;
+        ftd_external_children[id] = external_children;
+    }
+
+    return exports;
+})();
+
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+        }
+        pre {
+            white-space: break-spaces;
+        }
+
+        pre code {
+            overflow-x: auto;
+            display: block;
+            padding: 10px !important;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        ul {
+            margin: 0;
+        }
+
+        .ft_md ul,
+        .ft_md ol,
+        .ft_md p {
+            margin: 10px 0;
+        }
+
+        .ft_md h1,
+        .ft_md h2,
+        .ft_md h3,
+        .ft_md h4,
+        .ft_md h5 {
+            margin-top: 34px;
+            margin-bottom: 0;
+            line-height: 1.2em;
+            color: #000000;
+        }
+
+        .ft_md ul ul,
+        .ft_md ul ol,
+        .ft_md ol ul,
+        .ft_md ol ol {
+            line-height: 1.5em;
+            margin: 0;
+        }
+
+        .ft_md ul li,
+        .ft_md ol li,
+        .ft_md ul ol li .ft_md ul ul li .ft_md ol ul li .ft_md ol ol li {
+            position: relative;
+            padding-left: 32px;
+            margin: 4px 0;
+        }
+
+        .ft_md ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .ft_md ol {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: item;
+        }
+
+        .ft_md ol li:before,
+        .ft_md ol ol li:before,
+        .ft_md ul ol li:before {
+            content: counter(item);
+            counter-increment: item;
+            background-color: #e4e9eb;
+            color: #000000;
+            font-size: 11px;
+            line-height: 10px;
+            text-align: center;
+            padding: 4px 0;
+            height: 10px;
+            width: 18px;
+            border-radius: 10px;
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+
+        .ft_md ul li::before,
+        .ft_md ul ul li::before,
+        .ft_md ol ul li::before {
+            content: "";
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            left: 8px;
+            top: 10px;
+            border-radius: 50%;
+            background: #c1c8ce;
+        }
+
+        .ft_md a {
+            color: #0047b4;
+            text-decoration: none;
+        }
+
+        .ft_md a:visited {
+            color: #632ec4;
+        }
+
+        .ft_md a:hover {
+            text-decoration: none;
+        }
+
+        .ft_md code {
+            font-size: 0.9em;
+            padding: 0.1em 0.25em;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+        }
+
+        .ft_md blockquote {
+            padding: 0.25em 1em;
+            margin: 1em 0;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+        }
+
+        .ft_md blockquote>blockquote {
+            margin: 0;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="message"><div data-id="message:root" style="align-items: flex-start; align-self: center; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: wrap; height: 100%; justify-content: flex-start; margin-bottom: auto; margin-top: auto; white-space: initial; width: 100%" class="ft_md"><div data-id="0:message" style="align-items: flex-start; align-self: flex-start; background-image: linear-gradient(to right, rgba(232,127,133,1),rgba(255,173,178,1) ); border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 10px; padding-top: 10px; white-space: initial; width: 100%" class="ft_md"><div data-id="0,0:message" data-spacing="margin-left:15px" style="align-items: flex-start; align-self: center; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; margin-bottom: auto; white-space: initial" class="ft_md"><img alt="" data-id="0,0,0:message" src="https://res.cloudinary.com/dphj6havg/image/upload/v1640696994/info-1_jowsqn.svg" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; height: auto; white-space: initial; width: 16px">
+<div data-id="0,0,1:message" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; color: rgba(255,255,255,1); font-family: apple-system; font-size: 15px; font-weight: 600; margin-left: 15px; text-align: left; white-space: initial" class="ft_md">This document is not yet translated.</div></div></div></div><style>
+@font-face { unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;;
+font-style: light;;
+src: url(https://fonts.gstatic.com/s/opensans/v27/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format('woff2');
+font-family: Open Sans }</style></div>
+<div id="main"><div data-id="main:root" style="align-items: flex-start; align-self: center; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: wrap; height: 100%; justify-content: flex-start; margin-bottom: auto; margin-top: auto; white-space: initial; width: 100%" class="ft_md"><div data-id="0:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; white-space: initial; width: 100%" class="ft_md"><div data-id="main-row:0,0:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; white-space: initial; width: 100%" class="ft_md"><div data-id="0,0,0:main" style="align-items: flex-start; align-self: flex-start; border-color: rgba(235,237,239,1); border-radius: 0px; border-right-width: 1px !important; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; height: calc(100vh - 0px); justify-content: flex-start; overflow-y: auto; padding-bottom: 40px; padding-left: 10px; padding-right: 20px; padding-top: 15px; position: sticky; top: 0px; white-space: initial; width: 300px" class="ft_md"><div data-id="0,0,0,0:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 2px; padding-left: 10px; padding-top: 2px; white-space: initial" class="ft_md"><a data-id="0,0,0,0,0:main" href="index.html" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; color: rgba(28,28,36,1); cursor: pointer; font-family: Open sans; font-size: 14px; font-weight: 400; line-height: 20px; min-width: fit-content; padding-bottom: 3px; padding-left: 10px; padding-top: 3px; text-align: left; white-space: initial" class="ft_md">रस्ट प्रोग्रामिंग लैंग्वेज</a></div>
+<div data-id="0,0,0,1:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 2px; padding-left: 10px; padding-top: 2px; white-space: initial" class="ft_md"><a data-id="0,0,0,1,0:main" href="foreword/" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; color: rgba(28,28,36,1); cursor: pointer; font-family: Open sans; font-size: 14px; font-weight: 400; line-height: 20px; min-width: fit-content; padding-bottom: 3px; padding-left: 10px; padding-top: 3px; text-align: left; white-space: initial" class="ft_md">प्रस्तावना</a></div>
+<div data-id="0,0,0,2:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 2px; padding-left: 10px; padding-top: 2px; white-space: initial" class="ft_md"><a data-id="0,0,0,2,0:main" href="ch00-00-introduction/" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; color: rgba(28,28,36,1); cursor: pointer; font-family: Open sans; font-size: 14px; font-weight: 400; line-height: 20px; min-width: fit-content; padding-bottom: 3px; padding-left: 10px; padding-top: 3px; text-align: left; white-space: initial" class="ft_md">परिचय</a></div>
+<div data-id="0,0,0,3:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 2px; padding-left: 10px; padding-top: 2px; white-space: initial" class="ft_md"><a data-id="0,0,0,3,0:main" href="ch01-00-getting-started/" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; color: rgba(28,28,36,1); cursor: pointer; font-family: Open sans; font-size: 14px; font-weight: 400; line-height: 20px; min-width: fit-content; padding-bottom: 3px; padding-left: 10px; padding-top: 3px; text-align: left; white-space: initial" class="ft_md">शुरू करना</a>
+<div data-id="0,0,0,3,1:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 2px; padding-left: 10px; padding-top: 2px; white-space: initial" class="ft_md"><a data-id="0,0,0,3,1,0:main" href="ch01-01-installation/" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; color: rgba(28,28,36,1); cursor: pointer; font-family: Open sans; font-size: 14px; font-weight: 400; line-height: 20px; min-width: fit-content; padding-bottom: 3px; padding-left: 10px; padding-top: 3px; text-align: left; white-space: initial" class="ft_md">Installation</a></div>
+<div data-id="0,0,0,3,2:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 2px; padding-left: 10px; padding-top: 2px; white-space: initial" class="ft_md"><a data-id="0,0,0,3,2,0:main" href="ch01-02-hello-world/" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; color: rgba(28,28,36,1); cursor: pointer; font-family: Open sans; font-size: 14px; font-weight: 400; line-height: 20px; min-width: fit-content; padding-bottom: 3px; padding-left: 10px; padding-top: 3px; text-align: left; white-space: initial" class="ft_md">Hello, World!</a></div>
+<div data-id="0,0,0,3,3:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 2px; padding-left: 10px; padding-top: 2px; white-space: initial" class="ft_md"><a data-id="0,0,0,3,3,0:main" href="ch01-03-hello-cargo/" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; color: rgba(28,28,36,1); cursor: pointer; font-family: Open sans; font-size: 14px; font-weight: 400; line-height: 20px; min-width: fit-content; padding-bottom: 3px; padding-left: 10px; padding-top: 3px; text-align: left; white-space: initial" class="ft_md">Hello, Cargo</a></div></div></div>
+<div data-id="0,0,1:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; height: 100%; justify-content: flex-start; max-width: 900px; white-space: initial; width: 100%" class="ft_md"><div data-id="main-container:0,0,1,0:main" style="align-items: flex-start; align-self: center; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; margin-bottom: auto; max-width: 700px; white-space: initial" class="ft_md"><div data-ext-id="main-container-external:0:main" data-id="0,0,1,0,0:main-container-external:0:main" id="hello-world" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 12px; white-space: initial; width: 100%" class="ft_md"><div data-id="0,0,1,0,0,0:main-container-external:0:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; color: rgba(0,0,0,1); font-family: Open sans; font-size: 24px; font-weight: 700; line-height: 24px; padding-bottom: 8px; padding-top: 16px; text-align: left; white-space: initial" class="ft_md">Hello, World!</div>
+<div data-id="0,0,1,0,0,2:main-container-external:0:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; color: rgba(28,28,36,1); font-family: Open sans; font-size: 15px; font-weight: 400; line-height: 24px; padding-bottom: 8px; text-align: left; white-space: initial" class="ft_md"><p>Now that you’ve installed Rust, let’s write your first Rust program. It’s
+traditional when learning a new language to write a little program that prints
+the text <code>Hello, world!</code> to the screen, so we’ll do the same here!</p>
+<blockquote>
+<p>Note: This book assumes basic familiarity with the command line. Rust makes
+no specific demands about your editing or tooling or where your code lives, so
+if you prefer to use an integrated development environment (IDE) instead of
+the command line, feel free to use your favorite IDE. Many IDEs now have some
+degree of Rust support; check the IDE’s documentation for details. Recently,
+the Rust team has been focusing on enabling great IDE support, and progress
+has been made rapidly on that front!</p>
+</blockquote>
+<h3>Creating a Project Directory</h3>
+<p>You’ll start by making a directory to store your Rust code. It doesn’t matter
+to Rust where your code lives, but for the exercises and projects in this book,
+we suggest making a <em>projects</em> directory in your home directory and keeping all
+your projects there.</p>
+<p>Open a terminal and enter the following commands to make a <em>projects</em> directory
+and a directory for the “Hello, world!” project within the <em>projects</em> directory.</p>
+<p>For Linux, macOS, and PowerShell on Windows, enter this:</p>
+<pre><code class="language-console">$ mkdir ~/projects
+$ cd ~/projects
+$ mkdir hello_world
+$ cd hello_world
+</code></pre>
+<p>For Windows CMD, enter this:</p>
+<pre><code class="language-cmd">&gt; mkdir &quot;%USERPROFILE%\projects&quot;
+&gt; cd /d &quot;%USERPROFILE%\projects&quot;
+&gt; mkdir hello_world
+&gt; cd hello_world
+</code></pre>
+<h3>Writing and Running a Rust Program</h3>
+<p>Next, make a new source file and call it <em>main.rs</em>. Rust files always end with
+the <em>.rs</em> extension. If you’re using more than one word in your filename, use
+an underscore to separate them. For example, use <em>hello_world.rs</em> rather than
+<em>helloworld.rs</em>.</p>
+<p>Now open the <em>main.rs</em> file you just created and enter the code in Listing 1-1.</p>
+<p><!-- raw HTML omitted -->Filename: main.rs<!-- raw HTML omitted --></p>
+<pre><code class="language-rust">fn main() {
+    println!(&quot;Hello, world!&quot;);
+}
+</code></pre>
+<p><!-- raw HTML omitted -->Listing 1-1: A program that prints <code>Hello, world!</code><!-- raw HTML omitted --></p>
+<p>Save the file and go back to your terminal window. On Linux or macOS, enter
+the following commands to compile and run the file:</p>
+<pre><code class="language-console">$ rustc main.rs
+$ ./main
+Hello, world!
+</code></pre>
+<p>On Windows, enter the command <code>.\main.exe</code> instead of <code>./main</code>:</p>
+<pre><code class="language-powershell">&gt; rustc main.rs
+&gt; .\main.exe
+Hello, world!
+</code></pre>
+<p>Regardless of your operating system, the string <code>Hello, world!</code> should print to
+the terminal. If you don’t see this output, refer back to the
+<a href="ch01-01-installation.html#troubleshooting">“Troubleshooting”</a><!-- raw HTML omitted --> part of the Installation
+section for ways to get help.</p>
+<p>If <code>Hello, world!</code> did print, congratulations! You’ve officially written a Rust
+program. That makes you a Rust programmer—welcome!</p>
+<h3>Anatomy of a Rust Program</h3>
+<p>Let’s review in detail what just happened in your “Hello, world!” program.
+Here’s the first piece of the puzzle:</p>
+<pre><code class="language-rust">fn main() {
+
+}
+</code></pre>
+<p>These lines define a function in Rust. The <code>main</code> function is special: it is
+always the first code that runs in every executable Rust program. The first
+line declares a function named <code>main</code> that has no parameters and returns
+nothing. If there were parameters, they would go inside the parentheses, <code>()</code>.</p>
+<p>Also, note that the function body is wrapped in curly brackets, <code>{}</code>. Rust
+requires these around all function bodies. It’s good style to place the opening
+curly bracket on the same line as the function declaration, adding one space in
+between.</p>
+<p>If you want to stick to a standard style across Rust projects, you can use an
+automatic formatter tool called <code>rustfmt</code> to format your code in a particular
+style. The Rust team has included this tool with the standard Rust distribution,
+like <code>rustc</code>, so it should already be installed on your computer! Check the
+online documentation for more details.</p>
+<p>Inside the <code>main</code> function is the following code:</p>
+<pre><code class="language-rust">    println!(&quot;Hello, world!&quot;);
+</code></pre>
+<p>This line does all the work in this little program: it prints text to the
+screen. There are four important details to notice here.</p>
+<p>First, Rust style is to indent with four spaces, not a tab.</p>
+<p>Second, <code>println!</code> calls a Rust macro. If it called a function instead, it
+would be entered as <code>println</code> (without the <code>!</code>). We’ll discuss Rust macros in
+more detail in Chapter 19. For now, you just need to know that using a <code>!</code>
+means that you’re calling a macro instead of a normal function, and that macros
+don’t always follow the same rules as functions.</p>
+<p>Third, you see the <code>&quot;Hello, world!&quot;</code> string. We pass this string as an argument
+to <code>println!</code>, and the string is printed to the screen.</p>
+<p>Fourth, we end the line with a semicolon (<code>;</code>), which indicates that this
+expression is over and the next one is ready to begin. Most lines of Rust code
+end with a semicolon.</p>
+<h3>Compiling and Running Are Separate Steps</h3>
+<p>You’ve just run a newly created program, so let’s examine each step in the
+process.</p>
+<p>Before running a Rust program, you must compile it using the Rust compiler by
+entering the <code>rustc</code> command and passing it the name of your source file, like
+this:</p>
+<pre><code class="language-console">$ rustc main.rs
+</code></pre>
+<p>If you have a C or C++ background, you’ll notice that this is similar to <code>gcc</code>
+or <code>clang</code>. After compiling successfully, Rust outputs a binary executable.</p>
+<p>On Linux, macOS, and PowerShell on Windows, you can see the executable by
+entering the <code>ls</code> command in your shell. On Linux and macOS, you’ll see two
+files. With PowerShell on Windows, you’ll see the same three files that you
+would see using CMD.</p>
+<pre><code class="language-console">$ ls
+main  main.rs
+</code></pre>
+<p>With CMD on Windows, you would enter the following:</p>
+<pre><code class="language-cmd">&gt; dir /B %= the /B option says to only show the file names =%
+main.exe
+main.pdb
+main.rs
+</code></pre>
+<p>This shows the source code file with the <em>.rs</em> extension, the executable file
+(<em>main.exe</em> on Windows, but <em>main</em> on all other platforms), and, when using
+Windows, a file containing debugging information with the <em>.pdb</em> extension.
+From here, you run the <em>main</em> or <em>main.exe</em> file, like this:</p>
+<pre><code class="language-console">$ ./main # or .\main.exe on Windows
+</code></pre>
+<p>If <em>main.rs</em> was your “Hello, world!” program, this line would print <code>Hello, world!</code> to your terminal.</p>
+<p>If you’re more familiar with a dynamic language, such as Ruby, Python, or
+JavaScript, you might not be used to compiling and running a program as
+separate steps. Rust is an <em>ahead-of-time compiled</em> language, meaning you can
+compile a program and give the executable to someone else, and they can run it
+even without having Rust installed. If you give someone a <em>.rb</em>, <em>.py</em>, or
+<em>.js</em> file, they need to have a Ruby, Python, or JavaScript implementation
+installed (respectively). But in those languages, you only need one command to
+compile and run your program. Everything is a trade-off in language design.</p>
+<p>Just compiling with <code>rustc</code> is fine for simple programs, but as your project
+grows, you’ll want to manage all the options and make it easy to share your
+code. Next, we’ll introduce you to the Cargo tool, which will help you write
+real-world Rust programs.</p>
+</div></div></div></div></div></div></div><style>
+@font-face { unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;;
+font-style: light;;
+src: url(https://fonts.gstatic.com/s/opensans/v27/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format('woff2');
+font-family: Open Sans }</style></div>
+
+<script>
+    window.ftd.init(
+        "message",
+        JSON.parse(document.getElementById("ftd-data-message").innerText),
+        JSON.parse(document.getElementById("ftd-external-children-message").innerText)
+    );
+    window.ftd.init(
+        "main",
+        JSON.parse(document.getElementById("ftd-data-main").innerText),
+        JSON.parse(document.getElementById("ftd-external-children-main").innerText)
+    );
+</script>
+</body>
+</html>

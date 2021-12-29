@@ -3,66 +3,49 @@
 <head>
     <meta charset="UTF-8"><base href="/rust-book-hi/">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <title>Document</title>
-    <script type="ftd" id="ftd-data">
+    <title>FPM.ftd</title>
+
+    <script type="ftd" id="ftd-data-message">
         {
-  "fifthtry.github.io/Flash-theme#base_size": {
-    "value": "18",
-    "dependencies": {}
-  },
-  "fifthtry.github.io/Flash-theme#heading_size": {
-    "value": "28",
-    "dependencies": {}
-  },
-  "fifthtry.github.io/Flash-theme#neutral": {
-    "value": "#fff",
-    "dependencies": {}
-  },
-  "fifthtry.github.io/Flash-theme#neutral-200": {
-    "value": "#ced2dd",
-    "dependencies": {}
-  },
-  "fifthtry.github.io/Flash-theme#neutral-300": {
-    "value": "#F9F9F9",
-    "dependencies": {}
-  },
-  "fifthtry.github.io/Flash-theme#neutral-400": {
-    "value": "#E1E1E1",
-    "dependencies": {}
-  },
-  "fifthtry.github.io/Flash-theme#neutral-500": {
-    "value": "#323546",
-    "dependencies": {}
-  },
-  "fifthtry.github.io/Flash-theme#neutral-600": {
-    "value": "#3E4155",
-    "dependencies": {}
-  },
-  "fifthtry.github.io/Flash-theme#neutral-700": {
-    "value": "#1C1C24",
-    "dependencies": {}
-  },
-  "fifthtry.github.io/Flash-theme#neutral-800": {
-    "value": "#000",
-    "dependencies": {}
-  },
-  "fifthtry.github.io/Flash-theme#sub_heading_size": {
-    "value": "22",
-    "dependencies": {}
-  },
-  "fifthtry.github.io/Flash-theme#title_size": {
-    "value": "36",
-    "dependencies": {}
-  },
   "fpm#document-id": {
-    "value": "FPM/translation-status.ftd",
+    "value": "FPM.ftd",
+    "dependencies": {}
+  },
+  "message#show-main": {
+    "value": "true",
+    "dependencies": {
+      "0,0,2": "[{\"dependency_type\":\"Visible\",\"condition\":\"true\",\"parameters\":{}}]",
+      "0,0,3": "[{\"dependency_type\":\"Visible\",\"condition\":\"false\",\"parameters\":{}}]"
+    }
+  }
+}
+    </script>
+    <script type="ftd" id="ftd-external-children-message">
+        {}
+    </script>
+    <script type="ftd" id="ftd-data-main">
+        {
+  "fpm#document-id": {
+    "value": "FPM.ftd",
     "dependencies": {}
   }
 }
     </script>
-    <script type="ftd" id="ftd-external-children">
+    <script type="ftd" id="ftd-external-children-main">
         {}
     </script>
+    <script type="ftd" id="ftd-data-fallback">
+        {
+  "fpm#document-id": {
+    "value": "FPM.ftd",
+    "dependencies": {}
+  }
+}
+    </script>
+    <script type="ftd" id="ftd-external-children-fallback">
+        {}
+    </script>
+
     <script>
         // all ftd_utils are meant to be pure functions only: they can only depend on the
 // input passed, not on closures or global data etc
@@ -538,6 +521,7 @@ window.ftd = (function () {
 })();
 
     </script>
+
     <style>
         body {
             margin: 0;
@@ -667,47 +651,56 @@ window.ftd = (function () {
             margin: 0;
         }
 
-        </style>
+    </style>
 
 </head>
-    <body>
+<body>
 
-        <div data-id="main:root" style="align-items: flex-start; align-self: center; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: wrap; height: 100%; justify-content: flex-start; margin-bottom: auto; margin-top: auto; white-space: initial; width: 100%" class="ft_md"><div data-id="0:main" style="align-items: flex-start; align-self: flex-start; background-color: rgba(243,243,243,1); border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; max-width: 800px; white-space: initial; width: 100%" class="ft_md"><div data-id="0,0:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; white-space: initial; width: 100%" class="ft_md"><div data-id="0,0,0:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">Document</div>
-<div data-id="0,0,1:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">Status</div></div>
-<div data-id="0,1:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; white-space: initial; width: 100%" class="ft_md"><div data-id="0,1,0:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">FPM.ftd</div>
-<div data-id="0,1,1:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">Never marked</div></div>
-<div data-id="0,2:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; white-space: initial; width: 100%" class="ft_md"><div data-id="0,2,0:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">FPM/prelude.ftd</div>
-<div data-id="0,2,1:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">Never marked</div></div>
-<div data-id="0,3:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; white-space: initial; width: 100%" class="ft_md"><div data-id="0,3,0:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">README.md</div>
-<div data-id="0,3,1:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">Never marked</div></div>
-<div data-id="0,4:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; white-space: initial; width: 100%" class="ft_md"><div data-id="0,4,0:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">ch00-00-introduction.ftd</div>
-<div data-id="0,4,1:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">Missing</div></div>
-<div data-id="0,5:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; white-space: initial; width: 100%" class="ft_md"><div data-id="0,5,0:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">ch01-00-getting-started.ftd</div>
-<div data-id="0,5,1:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">Missing</div></div>
-<div data-id="0,6:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; white-space: initial; width: 100%" class="ft_md"><div data-id="0,6,0:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">ch01-01-installation.ftd</div>
-<div data-id="0,6,1:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">Missing</div></div>
-<div data-id="0,7:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; white-space: initial; width: 100%" class="ft_md"><div data-id="0,7,0:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">ch01-02-hello-world.ftd</div>
-<div data-id="0,7,1:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">Missing</div></div>
-<div data-id="0,8:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; white-space: initial; width: 100%" class="ft_md"><div data-id="0,8,0:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">ch01-03-hello-cargo.ftd</div>
-<div data-id="0,8,1:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">Missing</div></div>
-<div data-id="0,9:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; white-space: initial; width: 100%" class="ft_md"><div data-id="0,9,0:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">config.ftd</div>
-<div data-id="0,9,1:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">Never marked</div></div>
-<div data-id="0,10:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; white-space: initial; width: 100%" class="ft_md"><div data-id="0,10,0:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">foreword.ftd</div>
-<div data-id="0,10,1:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">Missing</div></div>
-<div data-id="0,11:main" style="align-items: flex-start; align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; white-space: initial; width: 100%" class="ft_md"><div data-id="0,11,0:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">index.ftd</div>
-<div data-id="0,11,1:main" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: 400; padding: 5px; text-align: left; white-space: initial; width: 50%" class="ft_md">Missing</div></div></div></div><style>
+<div id="message"><div data-id="message:root" style="align-items: flex-start; align-self: center; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: wrap; height: 100%; justify-content: flex-start; margin-bottom: auto; margin-top: auto; white-space: initial; width: 100%" class="ft_md"><div data-id="0:message" style="align-items: flex-start; align-self: flex-start; background-image: linear-gradient(to right, rgba(232,127,133,1),rgba(255,173,178,1) ); border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 10px; padding-top: 10px; white-space: initial; width: 100%" class="ft_md"><div data-id="0,0:message" data-spacing="margin-left:15px" style="align-items: flex-start; align-self: center; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; margin-bottom: auto; white-space: initial" class="ft_md"><img alt="" data-id="0,0,0:message" src="https://res.cloudinary.com/dphj6havg/image/upload/v1640696994/info-1_jowsqn.svg" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; height: auto; white-space: initial; width: 16px">
+<div data-id="0,0,1:message" style="align-self: flex-start; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; color: rgba(255,255,255,1); font-family: apple-system; font-weight: 600; margin-left: 15px; padding-right: 20px; text-align: left; white-space: initial" class="ft_md">This document is not yet approved.</div>
+<div data-id="0,0,2:message" onclick="window.ftd.handle_event(event, 'message', '[{&quot;action&quot;:&quot;toggle&quot;,&quot;target&quot;:&quot;message#show-main&quot;,&quot;parameters&quot;:{}},{&quot;action&quot;:&quot;message-host&quot;,&quot;target&quot;:&quot;show_fallback&quot;,&quot;parameters&quot;:{}}]')" style="align-self: flex-start; background-color: rgba(255,255,255,1); border-radius: 4px; border-style: solid; border-width: 0px; box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.05); box-sizing: border-box; color: rgba(232,127,133,1); cursor: pointer; font-family: apple-system; font-size: 13px; font-weight: 400; margin-left: 15px; padding-bottom: 4px; padding-left: 15px; padding-right: 15px; padding-top: 4px; text-align: left; white-space: initial" class="ft_md">Show unapproved version</div>
+<div data-id="0,0,3:message" onclick="window.ftd.handle_event(event, 'message', '[{&quot;action&quot;:&quot;toggle&quot;,&quot;target&quot;:&quot;message#show-main&quot;,&quot;parameters&quot;:{}},{&quot;action&quot;:&quot;message-host&quot;,&quot;target&quot;:&quot;show_main&quot;,&quot;parameters&quot;:{}}]')" style="align-self: flex-start; background-color: rgba(255,255,255,1); border-radius: 4px; border-style: solid; border-width: 0px; box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.05); box-sizing: border-box; color: rgba(232,127,133,1); cursor: pointer; display: none; font-family: apple-system; font-size: 13px; font-weight: 400; margin-left: 15px; padding-bottom: 4px; padding-left: 15px; padding-right: 15px; padding-top: 4px; text-align: left; white-space: initial" class="ft_md">Show latest version</div></div></div></div><style>
 @font-face { unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;;
 font-style: light;;
 src: url(https://fonts.gstatic.com/s/opensans/v27/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format('woff2');
-font-family: Open Sans }</style>
+font-family: Open Sans }</style></div>
+<div id="main"><div data-id="main:root" style="align-items: flex-start; align-self: center; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: wrap; height: 100%; justify-content: flex-start; margin-bottom: auto; margin-top: auto; white-space: initial; width: 100%" class="ft_md"></div><style>
+@font-face { unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;;
+font-style: light;;
+src: url(https://fonts.gstatic.com/s/opensans/v27/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format('woff2');
+font-family: Open Sans }</style></div>
+<div id="fallback" style="display: none"><div data-id="fallback:root" style="align-items: flex-start; align-self: center; border-radius: 0px; border-style: solid; border-width: 0px; box-sizing: border-box; display: flex; flex-direction: column; flex-wrap: wrap; height: 100%; justify-content: flex-start; margin-bottom: auto; margin-top: auto; white-space: initial; width: 100%" class="ft_md"></div><style>
+@font-face { unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;;
+font-style: light;;
+src: url(https://fonts.gstatic.com/s/opensans/v27/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format('woff2');
+font-family: Open Sans }</style></div>
 
+<script>
+    function show_main() {
+        document.getElementById("main").style.display = "block";
+        document.getElementById("fallback").style.display = "none";
+    }
 
-    <script>
-        window.ftd.init(
-            "main",
-            JSON.parse(document.getElementById("ftd-data").innerText),
-            JSON.parse(document.getElementById("ftd-external-children").innerText)
-        );
-    </script>
-    </body>
+    function show_fallback() {
+        document.getElementById("main").style.display = "none";
+        document.getElementById("fallback").style.display = "block";
+    }
+
+    window.ftd.init(
+        "message",
+        JSON.parse(document.getElementById("ftd-data-message").innerText),
+        JSON.parse(document.getElementById("ftd-external-children-message").innerText)
+    );
+    window.ftd.init(
+        "main",
+        JSON.parse(document.getElementById("ftd-data-main").innerText),
+        JSON.parse(document.getElementById("ftd-external-children-main").innerText)
+    );
+    window.ftd.init(
+        "fallback",
+        JSON.parse(document.getElementById("ftd-data-fallback").innerText),
+        JSON.parse(document.getElementById("ftd-external-children-fallback").innerText)
+    );
+</script>
+</body>
 </html>
